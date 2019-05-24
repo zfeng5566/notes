@@ -38,7 +38,7 @@ object:
 ```
 ##### from:string
 
-当匹配到from 路径，则重定向到to路径。也可以传url模式匹配项,而且使用  _from_ 属性，必须嵌套在<Switch>组件里。
+当匹配到from 路径，则重定向到to路径。也可以传url模式匹配项,而且使用  _from_ 属性，必须嵌套在<Switch>组件里,to的地址可以是任意路由地址。
 ```jsx
 <Switch>
   <Redirect from='/old-path' to='/new-path'/>
