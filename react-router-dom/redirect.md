@@ -5,11 +5,11 @@
 
 ### 组件属性配置
 
-> * to : string | object
-> * push : bool
-> * from : string
-> * exact : bool
-> * strict : bool
+>* to : string | object
+>* push : bool
+>* from : string
+>* exact : bool
+>* strict : bool
 ##### to:string | object
 
 string：要重定向到的URL,URL必须可以被[path-to-regexp@^1.7.0](https://github.com/pillarjs/path-to-regexp/tree/v1.7.0)正确解析。
@@ -38,7 +38,7 @@ object:
 ```
 ##### from:string
 
-当匹配到from 路径，则重定向到to路径。也可以传url模式匹配项,而且使用  _from_属性，必须嵌套在<Switch>组件里。
+当匹配到from 路径，则重定向到to路径。也可以传url模式匹配项,而且使用  _from_ 属性，必须嵌套在<Switch>组件里。
 ```jsx
 <Switch>
   <Redirect from='/old-path' to='/new-path'/>
@@ -61,4 +61,5 @@ object:
 
 ##### strict:bool
 
-严格匹配from属性值。*暂时不理解什么意思*
+严格匹配from属性值。
+*暂时不理解什么意思*
