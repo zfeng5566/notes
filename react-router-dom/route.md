@@ -81,9 +81,9 @@ children只接受函数,无论**path**是否匹配都会渲染组件。渲染时
 当为`true`的时候，`path`属性必须完全匹配`location.pathname`，才会渲染组件。
 
 | path | location.pathname | exact|matchs?|
-| ----| -----| ----  | ---- |
-|/one| \/one/two|true|no|
-|/one| \/one/two|false|yes|
+| ---- | -----             | ---- | ----  |
+|/one  | \/one/two         | true | no    |
+|/one  | \/one/two         | false| yes   |
 
 #### strict : boolean
 
