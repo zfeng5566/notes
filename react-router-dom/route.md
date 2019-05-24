@@ -94,3 +94,7 @@ children只接受函数,无论**path**是否匹配都会渲染组件。渲染时
 | /one/ | \/one/two         | true  | yes   |
 | /one  | \/one/            | true  | yes   |
 | /one/ | \/one             | true  | no    |
+
+#### sensitive : boolean
+
+大小写是否敏感,`true`则大小写敏感。`false`忽略大小写。默认为`false`。
