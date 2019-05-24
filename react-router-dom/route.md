@@ -87,6 +87,7 @@ children只接受函数,无论**path**是否匹配都会渲染组件。渲染时
 #### strict : boolean
 
 是否匹配尾斜杠`/`,当为`true`时,如果`path`末尾带着`/`,`location.pathname`末尾 无`/`且没有多余的片段，就会匹配失败，其它情况匹配成功。
+
 | path  | location.pathname | strict|matchs?|
 | ----  | ----------------- | ----  | ----  |
 | /one/ | \/one/two         | true  | yes   |
