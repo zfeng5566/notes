@@ -28,7 +28,7 @@ object对象形式可以包含上述三个参数还可以包含`state`参数。
 ### replace : boolean
 当为`true`时，新的url地址替换当前的url地址。否则就会创建新的url地址。
 
-#\<NavLink>
+# \<NavLink>
 一种高级版本的 **\<Link>** 组件，有激活配置属性，与当前url地址相同时，会激活`activeClassName`和`activeStyle`配置的属性。我们可以添加激活样式。
 
 ### activeClassName : string
