@@ -6,7 +6,7 @@
 **警告：**
 
 >* 多个`async`属性或`defer`脚本在现实当中，并不一定会按照顺序执行。因此确保两者之间互不依赖非常重要。
->* `defer`属性脚本在现实当中，不一定会在`DOMContentLoaded`事件触发前执行，因此最好只包含一个延迟脚本。
+>* `defer`属性脚本在现实当中，不一定会在`DOMContentLoaded`事件触发前执行。
 
 #### 八进制、十进制、十六进制表示法
 ```js
@@ -45,6 +45,7 @@ const o = +{valueOf:function(){return -1}}; // -1
 #### History API
 在History API出现之前，我们没有办法使用js代码操作会话记录的前进后退。History API的出现使我们拥有了操作浏览器会话历史纪录的能力，通过`History API`接口改变当前会话路径，不会引起浏览器重新请求。通过访问`window.history`来操作会话记录。下面实在chrome控制台输出的history对象。
 ![history](../images/history.png)
+
 **history.length** : 会话历史中元素的数量。
 **hisotry.back()** : 前往上一页，等价于**history.go(-1)**。当处于最开始一页时，执行没有效果，不会报错。
 **hisotry.forward()** : 前往下一页，等价于**history.go(1)**。当处于最后一页时，执行没有效果，不会报错。
@@ -81,8 +82,14 @@ history.replaceState({userId:123123},'','/user');
 //我们可以在history.state 中取到 {userId:123123}
 ```
 
-**最重要的内容** `window.onpopstate`事件
+**`window.onpopstate`事件**
+
 当用户点击浏览器前进，后退按钮 或者，调用`history.go()` `history.forward()` `history.back()` 才会触发这个事件。
 此外请注意，`history.pushState()`及`history.replaceState()`本身调用时是不触发popstate事件。
-
+```js
+window.onpopstate = function (event) {
+  console.log(event)
+  console.log('当前会话URL发生改变')
+};
+```
 
