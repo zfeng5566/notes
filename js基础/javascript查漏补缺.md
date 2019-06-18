@@ -1,6 +1,6 @@
 ### JavaScript
 
-#### <script\>`async`和`defer`属性和区别
+### <script\>`async`和`defer`的区别
 ![async与defer的区别](../images/script_defer_async.png)
 
 **警告：**
@@ -8,7 +8,7 @@
 >* 多个`async`属性或`defer`脚本在现实当中，并不一定会按照顺序执行。因此确保两者之间互不依赖非常重要。
 >* `defer`属性脚本在现实当中，不一定会在`DOMContentLoaded`事件触发前执行。
 
-#### 八进制、十进制、十六进制表示法
+### 八进制、十进制、十六进制表示法
 ```js
 //八进制的56 八进制之字面值的第一位必须时零(0)
 const ocatalNum = 070  
@@ -18,7 +18,7 @@ const intNum = 55
 const hexNu = 0x1f 
 ```
 
-#### 一元加操作符
+### 一元加操作符
 
 一元加操作符，放在数值前面，对数值不会产生任何影响。
 ```js
@@ -38,11 +38,11 @@ const num5 = true // 1
 const o = +{valueOf:function(){return -1}}; // -1
 ```
 
-#### 原码 反码 补码
+### 原码 反码 补码
 
-#### Event Loop
+### Event Loop
 
-#### History API
+### History API
 在History API出现之前，我们没有办法使用js代码操作会话记录的前进后退。History API的出现使我们拥有了操作浏览器会话历史纪录的能力，通过`History API`接口改变当前会话路径，不会引起浏览器重新请求。通过访问`window.history`来操作会话记录。下面实在chrome控制台输出的history对象。
 ![history](../images/history.png)
 
@@ -89,10 +89,17 @@ window.onpopstate = function (event) {
   console.log('当前会话URL发生改变')
 };
 ```
-#### URLSearchParams API
+
+
+### URLSearchParams API
 *`URLSearchParams`* 接口定义了一些方法来处理URL的查询字符串。URLSearchParams实例化的对象是可迭代对象。
 ![URLSearchParams](../images/urlsearchparams.png)
-**方法：**
+
+
+#### 方法：
+**`URLSearchParams.toString()`**
+返回搜索参数组成的字符串，可直接使用在URL上。
+
 **`URLSearchParams.append(name,value)`**
 添加一个新的搜索参数。返回值：`undefined`。
 > name : 需要插入参数的键名
@@ -129,10 +136,10 @@ let urlSearch = new URLSearchParams("q=123&topic=api");
 urlSearch.forEach(function(value,key){
   console.log(value,key)
 })
-
 // 123 q
 // api topic
 ```
+
 **`URLSearchParams.get(key)`** 和 **`URLSearchParams.getAll(key)`**
 直接看代码就发现区别了。
 ```js
@@ -143,7 +150,30 @@ urlSearch.getAll("q")     // ["123","456"]
 urlSearch.getAll("topic") // ["api"]
 ```
 
+**`URLSearchParams.has(key)`**
+返回`Boolean`判断是否存在要搜索的参数
 
 
-
-
+**`URLSearchParams.keys()`**
+返回`iterator`对象包含所有的键名
+```js
+let urlSearch = new URLSearchParams("q=123&q=456&topic=api");
+let keyIterator = urlSearch.keys();
+[...keyIterator]; //["q", "q", "topic"]
+```
+**`URLSearchParams.values()`**
+返回`iterator`对象包含所有的值
+```js
+let urlSearch = new URLSearchParams("q=123&q=456&topic=api");
+let keyIterator = urlSearch.values();
+[...keyIterator]; // ["123", "456", "api"]
+```
+**`URLSearchParams.set(name,value)`**
+ 设置一个搜索参数的新值，假如原来有多个值将删除其他所有的值。
+ ```js
+let urlSearch = new URLSearchParams("q=123&q=456&topic=api");
+urlSearch.set('key','value');
+urlSearch.toString(); // "q=123&q=456&topic=api&key=value"
+urlSearch.set('q','100');
+urlSearch.toString(); // "q=100&topic=api&key=value"
+ ```
