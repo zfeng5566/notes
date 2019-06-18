@@ -60,9 +60,6 @@ history.go("/abc/test") //去最近的 /abc/test 页  可能是前进 也可能�
 ```js
 // pushState 参数如下：
 // history.pushState(state,title,url);
-// state : Object 新会话记录的状态信息，我们可以从当前会话里传一些数据给新的会话记录使用。
-// title : String 新会话记录的标题
-// url   : String 新会话记录的URL(路径)
 
 //例如：
 history.pushState({userId:123123},'','/user');
@@ -73,15 +70,15 @@ history.pushState({userId:123123},'','/user');
 ```js
 // replaceState 参数如下：
 // history.replaceState(state,title,url);
-// state : Object 新会话记录的状态信息，我们可以从当前会话里传一些数据给新的会话记录使用。
-// title : String 新会话记录的标题
-// url   : String 新会话记录的URL(路径)
 
 //例如：
 history.replaceState({userId:123123},'','/user');
 //我们可以在history.state 中取到 {userId:123123}
 ```
-
+pushState 和 replaceState接受相同的参数
+> state : 一个与添加的记录相关联的状态对象，主要用于popstate事件。该事件触发时，该对象会传入回调函数。也就是说，浏览器会将这个对象序列化以后保留在本地，重新载入这个页面的时候，可以拿到这个对象。如果不需要这个对象，此处可以填null。
+> title : String 新会话记录的标题
+> url : String 新会话记录的URL(路径) 新的网址，必须与当前页面处在同一个域。浏览器的地址栏将显示这个网址
 **`window.onpopstate`事件**
 
 当用户点击浏览器前进，后退按钮 或者，调用`history.go()` `history.forward()` `history.back()` 才会触发这个事件。
@@ -92,4 +89,61 @@ window.onpopstate = function (event) {
   console.log('当前会话URL发生改变')
 };
 ```
+#### URLSearchParams API
+*`URLSearchParams`* 接口定义了一些方法来处理URL的查询字符串。URLSearchParams实例化的对象是可迭代对象。
+![URLSearchParams](../images/urlsearchparams.png)
+**方法：**
+**`URLSearchParams.append(name,value)`**
+添加一个新的搜索参数。返回值：`undefined`。
+> name : 需要插入参数的键名
+> value : 需要插入参数的值
+
+```js
+let urlSearch = new URLSearchParams("q=123&topic=api");
+urlSearch.append("key","value"); // 返回值undefined
+urlSearch.toString(); // "q=123&topic=api&key=value"
+```
+
+**`URLSearchParams.delete(name)`**
+删除一个指定搜索参数,不存在参数不会报错。返回值:`undefined`。
+> name : 需要参数的键名
+
+**`URLSearchParams.entries()`**
+返回一个`iterator`(可迭代对象)。
+```js
+// 创建一个URLSearchParams 对象
+var searchParams = new URLSearchParams("key1=value1&key2=value2");
+
+// 显示键/值对
+for(var pair of searchParams.entries()) {
+   console.log(pair[0]+ ', '+ pair[1]); 
+}
+// 输出如下：
+// key1, value1
+// key2, value2
+```
+**`URLSearchParams.forEach(fn)`**
+遍历参数，返回值：`undefined`。
+```js
+let urlSearch = new URLSearchParams("q=123&topic=api");
+urlSearch.forEach(function(value,key){
+  console.log(value,key)
+})
+
+// 123 q
+// api topic
+```
+**`URLSearchParams.get(key)`** 和 **`URLSearchParams.getAll(key)`**
+直接看代码就发现区别了。
+```js
+let urlSearch = new URLSearchParams("q=123&q=456&topic=api");
+urlSearch.get("q")        // 123
+urlSearch.get("topic")    // api
+urlSearch.getAll("q")     // ["123","456"]
+urlSearch.getAll("topic") // ["api"]
+```
+
+
+
+
 
