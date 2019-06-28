@@ -85,7 +85,6 @@ Options:
 |-x           | Attach to a not detached screen. (Multi display mode).|
 |-X           | Execute <cmd> as a screen command in the specified session.|
 
-创建一个自定义名字的screen窗口,并打开该窗口。
 
 常用命令
  `screen [commond]`打开一个screen窗口执行shell 命令。
@@ -95,7 +94,7 @@ Options:
  `screen -ls` `screen -list`列出所有screen任务。
 
  在screenc窗口使用`ctrl`+`a`+`d`关闭窗口(任务不终止)。
- 
+
  `screen -r [pid|sessionname]` 打开任务会话窗口。
 
 
