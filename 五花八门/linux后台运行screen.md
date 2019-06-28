@@ -47,6 +47,7 @@ screen -S sessionname
 ```
 
 Options:
+
 |指令|描述|
 |---|---|
 |-4|            Resolve hostnames only to IPv4 addresses.|
@@ -83,6 +84,7 @@ Options:
 |-wipe [match]| Do nothing, just clean up SockDir [on possible matches].|
 |-x           | Attach to a not detached screen. (Multi display mode).|
 |-X           | Execute <cmd> as a screen command in the specified session.|
+
 创建一个自定义名字的screen窗口,并打开该窗口。
 
 常用命令
