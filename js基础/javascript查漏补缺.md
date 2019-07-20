@@ -14,7 +14,7 @@
 const ocatalNum = 070  
 // 整数 十进制 55
 const intNum = 55
-//十六进制的 31   十六进制字面值的前两位必须时0xr't
+//十六进制的 31   十六进制字面值的前两位必须时0x
 const hexNu = 0x1f 
 ```
 
